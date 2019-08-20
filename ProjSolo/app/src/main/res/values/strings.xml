@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ProjSolo</string>
+    <string name="btnGerenciarClientes">Gerenciar Clientes</string>
+    <string name="btnCadastrarCliente">Cadatrar Cliente</string>
+    <string name="btnEditarCliente">Editar Cliente</string>
+    <string name="btnListarCllientes">Listar Clientes</string>
+    <string name="btnApagarCliente">Apagar Cliente</string>
 </resources>
