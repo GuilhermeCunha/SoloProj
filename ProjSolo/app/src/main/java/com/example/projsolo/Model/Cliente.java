@@ -1,6 +1,9 @@
 package com.example.projsolo.Model;
 
-public class Cliente {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Cliente implements Parcelable {
     private int id;
     private String nome;
     private String celular;
@@ -15,6 +18,26 @@ public class Cliente {
         this.email = email;
     }
 
+
+    protected Cliente(Parcel in) {
+        id = in.readInt();
+        nome = in.readString();
+        celular = in.readString();
+        telefone = in.readString();
+        email = in.readString();
+    }
+
+    public static final Creator<Cliente> CREATOR = new Creator<Cliente>() {
+        @Override
+        public Cliente createFromParcel(Parcel in) {
+            return new Cliente(in);
+        }
+
+        @Override
+        public Cliente[] newArray(int size) {
+            return new Cliente[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -54,5 +77,19 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(nome);
+        parcel.writeString(celular);
+        parcel.writeString(telefone);
+        parcel.writeString(email);
     }
 }
