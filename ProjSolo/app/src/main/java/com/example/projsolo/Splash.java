@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.projsolo.ui.login.LoginActivity;
+
 import java.util.Objects;
 
 public class Splash extends AppCompatActivity{
@@ -29,7 +31,12 @@ public class Splash extends AppCompatActivity{
     }
 
     public void mostrarTela(){
+        /*
         Intent i =new Intent(getApplicationContext(), Menu.class);
         startActivity(i);
+        */
+        Intent i =new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(i);
+
     }
 }
