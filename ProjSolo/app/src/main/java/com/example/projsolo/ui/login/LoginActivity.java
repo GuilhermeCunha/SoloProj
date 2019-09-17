@@ -23,6 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.projsolo.CadastroUsuario;
 import com.example.projsolo.Menu;
 import com.example.projsolo.R;
 import com.example.projsolo.ui.login.LoginViewModel;
@@ -125,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
         String welcome = getString(R.string.boasvindas) + model.getDisplayName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-        Intent i = new Intent(getApplicationContext(), Menu.class);
+        Intent i = new Intent(getApplicationContext(), CadastroUsuario.class);
         startActivity(i);
     }
 

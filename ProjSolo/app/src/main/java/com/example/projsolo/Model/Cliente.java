@@ -17,6 +17,12 @@ public class Cliente implements Parcelable {
         this.telefone = telefone;
         this.email = email;
     }
+    public Cliente( String nome, String celular, String telefone, String email) {
+        this.nome = nome;
+        this.celular = celular;
+        this.telefone = telefone;
+        this.email = email;
+    }
 
 
     protected Cliente(Parcel in) {

@@ -10,6 +10,7 @@ import android.widget.Button;
 public class Menu extends AppCompatActivity implements Organization{
     //Elementos
     Button btnGerenciarClientes;
+    Button btnConfiguracoes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,7 @@ public class Menu extends AppCompatActivity implements Organization{
 
     public void reconhecerElementos(){
         this.btnGerenciarClientes = (Button) findViewById(R.id.btnGerenciarClientes);
-
+        this.btnConfiguracoes = (Button) findViewById(R.id.btnConfiguracoes);
 
     }
 
@@ -37,6 +38,13 @@ public class Menu extends AppCompatActivity implements Organization{
             }
         });
 
+        this.btnConfiguracoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Configuracoes.class);
+                startActivity(i);
+            }
+        });
 
     }
 }
