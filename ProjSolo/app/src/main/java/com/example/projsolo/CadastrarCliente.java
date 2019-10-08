@@ -8,9 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.projsolo.Controller.ClienteCTR;
 import com.example.projsolo.Model.Cliente;
+import com.example.projsolo.dbHelper.ConexaoSQLite;
 
 public class CadastrarCliente extends AppCompatActivity implements Organization{
+    ConexaoSQLite conexaoSQLite;
+    ClienteCTR clienteCTR;
     EditText nomeCompleto;
     EditText celular;
     EditText telefone;
@@ -32,6 +36,8 @@ public class CadastrarCliente extends AppCompatActivity implements Organization{
         this.telefone = (EditText) findViewById(R.id.editCadastroTelefoneCliente);
         this.email = (EditText) findViewById(R.id.editCadastroEmailCliente);
         this.cadastrar = (Button) findViewById(R.id.btnConfirmarCadastroCliente);
+        this.conexaoSQLite = new ConexaoSQLite(getApplicationContext());
+        this.clienteCTR = new ClienteCTR(conexaoSQLite);
 
     }
 
@@ -46,9 +52,15 @@ public class CadastrarCliente extends AppCompatActivity implements Organization{
                 String strEmail = email.getText().toString();
 
                 Cliente cliente = new Cliente(strNome, strCelular, strTelefone, strEmail);
+                clienteCTR.salvarCliente(cliente);
+                Intent i = new Intent(getApplicationContext(), GerenciarClientes.class);
+                startActivity(i);
+
+                /*
                 Intent i = new Intent(getApplicationContext(), UsuarioFoiCadastrado.class);
                 i.putExtra("Cliente", cliente);
                 startActivity(i);
+                */
             }
         });
     }

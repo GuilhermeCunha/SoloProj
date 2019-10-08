@@ -9,6 +9,9 @@ import android.widget.Button;
 
 public class GerenciarClientes extends AppCompatActivity implements Organization{
     Button cadastrarClientes;
+    Button editarClientes;
+    Button listarClientes;
+    Button apagarClientes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +24,10 @@ public class GerenciarClientes extends AppCompatActivity implements Organization
     @Override
     public void reconhecerElementos() {
         this.cadastrarClientes = (Button) findViewById(R.id.btnCadastrarCliente);
+        this.editarClientes = (Button) findViewById(R.id.btnEditarCliente);
+        this.listarClientes = (Button) findViewById(R.id.btnListarCllientes);
+        this.apagarClientes = (Button) findViewById(R.id.btnApagarCliente);
+
 
     }
 
@@ -29,10 +36,31 @@ public class GerenciarClientes extends AppCompatActivity implements Organization
         this.cadastrarClientes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), CadastrarCliente.class);
+                Intent i = new Intent(GerenciarClientes.this, CadastrarCliente.class);
                 startActivity(i);
             }
         });
+
+        this.editarClientes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        this.listarClientes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), ListarClientes.class);
+                startActivity(i);
+            }
+        });
+        this.apagarClientes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
 
     }
 }

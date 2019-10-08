@@ -98,4 +98,8 @@ public class Cliente implements Parcelable {
         parcel.writeString(telefone);
         parcel.writeString(email);
     }
+
+    @Override public String toString() {
+        return (this.getNome() + " " + this.getCelular() + " " + this.getTelefone() + "  " + this.getEmail());
+    }
 }
