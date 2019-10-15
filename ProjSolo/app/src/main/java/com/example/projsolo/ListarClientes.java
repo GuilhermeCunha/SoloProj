@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListarClientes extends AppCompatActivity implements Organization{
-    ConexaoSQLite conexaoSQLite = new ConexaoSQLite(getApplicationContext());
-    ClienteCTR clienteCTR= new ClienteCTR(conexaoSQLite);
+    ConexaoSQLite conexaoSQLite;
+    ClienteCTR clienteCTR;
     List<Cliente> clientes = new ArrayList<>();
 
     ListView listaDeCursos;
@@ -24,8 +24,8 @@ public class ListarClientes extends AppCompatActivity implements Organization{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_listar_clientes);
-
-
+        conexaoSQLite = new ConexaoSQLite(getApplicationContext());
+        clienteCTR =  new ClienteCTR(conexaoSQLite);
         reconhecerElementos();
         reconhecerListeners();
     }

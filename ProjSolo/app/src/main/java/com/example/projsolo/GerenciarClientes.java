@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.projsolo.Fragment.ClienteListFragment;
+
 public class GerenciarClientes extends AppCompatActivity implements Organization{
     Button cadastrarClientes;
     Button editarClientes;
@@ -50,8 +52,13 @@ public class GerenciarClientes extends AppCompatActivity implements Organization
         this.listarClientes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Intent i = new Intent(getApplicationContext(), ListarClientes.class);
                 startActivity(i);
+                 */
+                Intent i = new Intent(getApplicationContext(), ListarClientesFragment.class);
+                startActivity(i);
+
             }
         });
         this.apagarClientes.setOnClickListener(new View.OnClickListener() {
