@@ -39,10 +39,11 @@ public class ClienteDAO {
 
 
     public List<Cliente> listarClientes(){
+        Log.i("listarClientes", "Listando Clientes...");
         List<Cliente> clientes = new ArrayList<>();
         SQLiteDatabase db = null;
         Cursor cursor;
-        String sql = "SELECT * FROM Carro;";
+        String sql = "SELECT * FROM Cliente;";
         try{
             db = conexaoSQLite.getReadableDatabase();
             cursor = db.rawQuery(sql, null);

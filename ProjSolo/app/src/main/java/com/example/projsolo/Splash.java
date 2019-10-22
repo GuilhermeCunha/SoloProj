@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.projsolo.dbHelper.ConexaoSQLite;
 import com.example.projsolo.ui.login.LoginActivity;
 
 import java.util.Objects;
@@ -17,7 +18,7 @@ public class Splash extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_splash);
         Objects.requireNonNull(getSupportActionBar()).hide();
-
+        ConexaoSQLite conexaoSQLite = new ConexaoSQLite(getApplicationContext());
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -31,12 +32,7 @@ public class Splash extends AppCompatActivity{
     }
 
     public void mostrarTela(){
-        /*
-        Intent i =new Intent(getApplicationContext(), Menu.class);
-        startActivity(i);
-        */
         Intent i = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(i);
-
     }
 }
