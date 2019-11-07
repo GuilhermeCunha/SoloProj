@@ -18,12 +18,7 @@ public class Splash extends AppCompatActivity implements Organization {
         setContentView(R.layout.layout_splash);
 
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mostrarTela();
-            }
-        },2000);
+        handler.postDelayed(() -> mostrarTela(),2000);
     }
     public void mostrarTela(){
         Intent i = new Intent(getApplicationContext(), Login.class);
