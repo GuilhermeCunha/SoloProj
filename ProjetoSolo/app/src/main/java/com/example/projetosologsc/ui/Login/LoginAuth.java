@@ -1,50 +1,42 @@
 package com.example.projetosologsc.ui.Login;
 
+import android.util.Log;
+
+import com.example.projetosologsc.DB.WebServiceCommunication;
+import com.example.projetosologsc.Model.Usuario;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.PrintStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginAuth {
-
-    public static boolean realizarLogin(String login, String senha){
+    public static boolean realizarLogin(String email, String senha){
         JSONObject json = new JSONObject();
-        try {
-            json.put("login", login);
+        try{
+            json.put("email", email);
             json.put("senha", senha);
-        } catch (JSONException e) {
+        }catch (JSONException e) {
             e.printStackTrace();
         }
 
-        sendPost(json);
-        return true;
-    }
-
-    private static boolean sendPost( JSONObject postParams) {
         try {
-            String url = "http://localhost:3000/login";
-            URL obj = new URL(url);
-            HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
-
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setRequestProperty("Content-Length", Integer.toString(postParams.length()));
-            conn.setDoOutput(true);
-
-            PrintStream printStream = new PrintStream(conn.getOutputStream());
-            printStream.println(postParams); //seta o que voce vai enviar
-
-            conn.connect(); //envia para o servidor
-
-            String jsonDeResposta = new Scanner(conn.getInputStream()).next(); //pega resposta
+            Log.e("Login",json.toString());
+            //List<Usuario> usuarios = new ArrayList<>();
+            //usuarios = WebServiceCommunication.listarUsuarios();
+            Boolean resultado = WebServiceCommunication.login(email, senha);
+            if(resultado){
+                Log.e("Resultado","Sucesso");
+            }else{
+                Log.e("Resultado", "Erro");
+            }
             return true;
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (Exception e) {
+
+            e.printStackTrace();
             return false;
         }
+
     }
 }
