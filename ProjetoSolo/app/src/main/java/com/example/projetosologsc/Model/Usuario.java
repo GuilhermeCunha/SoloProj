@@ -5,6 +5,8 @@ public class Usuario {
     private String senha;
     private String celular;
     private String nome;
+    private Boolean sucesso;
+
 
     public String getEmail() {
         return email;
@@ -36,5 +38,13 @@ public class Usuario {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Boolean getSucesso() {
+        return sucesso;
+    }
+
+    public void setSucesso(Boolean sucesso) {
+        this.sucesso = sucesso;
     }
 }

@@ -2,41 +2,34 @@ package com.example.projetosologsc.ui.Login;
 
 import android.util.Log;
 
-import com.example.projetosologsc.DB.WebServiceCommunication;
+import com.example.projetosologsc.API.RetrofitClientInstance;
+import com.example.projetosologsc.Interfaces.NodeServer;
 import com.example.projetosologsc.Model.Usuario;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.w3c.dom.Node;
 
-import java.util.ArrayList;
-import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginAuth {
-    public static boolean realizarLogin(String email, String senha){
-        JSONObject json = new JSONObject();
-        try{
-            json.put("email", email);
-            json.put("senha", senha);
-        }catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            Log.e("Login",json.toString());
-            //List<Usuario> usuarios = new ArrayList<>();
-            //usuarios = WebServiceCommunication.listarUsuarios();
-            Boolean resultado = WebServiceCommunication.login(email, senha);
-            if(resultado){
-                Log.e("Resultado","Sucesso");
-            }else{
-                Log.e("Resultado", "Erro");
+    public static boolean login(String email, String senha){
+        NodeServer service = RetrofitClientInstance.getRetrofitInstance().create(NodeServer.class);
+        Call<Usuario> call = service.login(email, senha);
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                Log.e("ONRESPONSE","OK");
             }
-            return true;
-        } catch (Exception e) {
 
-            e.printStackTrace();
-            return false;
-        }
-
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                Log.e("OSFAILURE", "NÃO OK");
+                Log.e("ERROR", t.getMessage());
+            }
+        });
+        return true;
     }
 }

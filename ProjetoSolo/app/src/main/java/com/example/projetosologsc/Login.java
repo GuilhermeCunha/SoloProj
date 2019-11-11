@@ -2,22 +2,22 @@ package com.example.projetosologsc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.QuickContactBadge;
 
-import com.example.projetosologsc.DB.WebServiceCommunication;
+import com.example.projetosologsc.API.RetrofitClientInstance;
+import com.example.projetosologsc.Interfaces.NodeServer;
 import com.example.projetosologsc.Interfaces.Organization;
+import com.example.projetosologsc.Model.Usuario;
 import com.example.projetosologsc.ui.Login.LoginAuth;
-import com.mongodb.stitch.android.core.Stitch;
-import com.mongodb.stitch.android.core.StitchAppClient;
-import com.mongodb.stitch.android.services.mongodb.remote.RemoteMongoClient;
-import com.mongodb.stitch.core.auth.providers.custom.CustomCredential;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Login extends AppCompatActivity  implements Organization {
     Button btnLogar;
@@ -69,12 +69,26 @@ public class Login extends AppCompatActivity  implements Organization {
             public void onClick(View view) {
                 String strEmail = edtEmail.getText().toString();
                 String strPassword = edtPassword.getText().toString();
-                Boolean login = LoginAuth.realizarLogin(strEmail, strPassword);
-                if(login ){
-                    Log.e("Resultado", "SUCESSO");
-                }else{
-                    Log.e("Resultado", "FALHA");
-                }
+                //LoginAuth.login(strEmail, strPassword);
+
+                NodeServer service = RetrofitClientInstance.getRetrofitInstance().create(NodeServer.class);
+                Call<Usuario> call = service.login(strEmail, strPassword);
+                call.enqueue(new Callback<Usuario>() {
+                    @Override
+                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                        if(response.isSuccessful()){
+                            Log.e("ONRESPONSE","LOGADO COM SUCESSO");
+                        }else{
+                            Log.e("ONRESPONSE","CREDENCIAIS INVÁLIDAS");
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Usuario> call, Throwable t) {
+                        Log.e("OSFAILURE", "NÃO OK");
+                    }
+                });
             }
         });
     }
