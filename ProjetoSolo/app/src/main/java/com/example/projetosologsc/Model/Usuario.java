@@ -47,4 +47,11 @@ public class Usuario {
     public void setSucesso(Boolean sucesso) {
         this.sucesso = sucesso;
     }
+
+    public Usuario(String email, String senha, String celular, String nome) {
+        this.email = email;
+        this.senha = senha;
+        this.celular = celular;
+        this.nome = nome;
+    }
 }

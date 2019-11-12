@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ProjetoSoloGSC</string>
-    <string name="stitch_client_app_id">projsolostitch-zqczq</string>
+    <string name="pref_key">preferencia</string>
+    <string name="pref_email">preferencia-email</string>
+
+
 </resources>
