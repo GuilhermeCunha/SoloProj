@@ -13,8 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".RegistrarAnuncio"></activity>
         <activity android:name=".Register" />
-        <activity android:name=".ListarProdutos" />
+        <activity android:name=".ListarAnuncios" />
         <activity android:name=".Menu" />
         <activity android:name=".Login" />
         <activity android:name=".Splash.Splash">

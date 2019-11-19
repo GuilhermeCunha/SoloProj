@@ -1,10 +1,19 @@
 package com.example.projetosologsc.Model;
 
 public class Anuncio {
+    private int ID;
     private String nome;
     private Double preco;
     private String mensagem;
     private Boolean sucesso;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     public String getNome() {
         return nome;
@@ -38,7 +47,14 @@ public class Anuncio {
         this.sucesso = sucesso;
     }
 
-    public Anuncio(String nome, Double preco, String mensagem) {
+    public Anuncio(int ID, String nome, String mensagem, Double preco) {
+        this.ID = ID;
+        this.nome = nome;
+        this.preco = preco;
+        this.mensagem = mensagem;
+    }
+
+    public Anuncio(String nome, String mensagem, Double preco) {
         this.nome = nome;
         this.preco = preco;
         this.mensagem = mensagem;

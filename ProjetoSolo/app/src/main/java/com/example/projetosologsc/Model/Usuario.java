@@ -5,6 +5,7 @@ public class Usuario {
     private String senha;
     private String celular;
     private String nome;
+    private String CPF;
     private Boolean sucesso;
 
 
@@ -48,10 +49,19 @@ public class Usuario {
         this.sucesso = sucesso;
     }
 
-    public Usuario(String email, String senha, String celular, String nome) {
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+
+    public Usuario(String email, String senha, String celular, String nome, String CPF) {
         this.email = email;
         this.senha = senha;
         this.celular = celular;
         this.nome = nome;
+        this.CPF = CPF;
     }
 }

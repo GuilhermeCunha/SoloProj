@@ -17,7 +17,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ListarProdutos extends AppCompatActivity implements Organization {
+public class ListarAnuncios extends AppCompatActivity implements Organization {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -21,11 +21,11 @@ public interface NodeServer {
 
     @FormUrlEncoded
     @POST("/criar-usuario")
-    Call<Usuario> criarUsuario (@Field("email") String email, @Field("nome") String nome, @Field("senha") String senha, @Field("celular") String celular);
+    Call<Usuario> criarUsuario (@Field("email") String email, @Field("nome") String nome, @Field("senha") String senha, @Field("celular") String celular, @Field("cpf") String cpf);
 
     @FormUrlEncoded
     @PUT("/editar-usuario")
-    Call<Usuario> EditarUsuario (@Field("email") String email, @Field("nome") String nome, @Field("senha") String senha, @Field("celular") String celular);
+    Call<Usuario> EditarUsuario (@Field("email") String email, @Field("nome") String nome, @Field("senha") String senha, @Field("celular") String celular, @Field("cpf") String cpf);
 
     @FormUrlEncoded
     @DELETE("/remover-usuario")
@@ -36,14 +36,14 @@ public interface NodeServer {
 
     @FormUrlEncoded
     @POST("/criar-anuncio")
-    Call<Anuncio> CriarAnuncio (@Field("nome") String nome, @Field("preco") String preco, @Field("mensagem") String mensagem);
+    Call<Anuncio> CriarAnuncio (@Field("id") String id, @Field("nome") String nome, @Field("preco") String preco, @Field("mensagem") String mensagem);
 
     @FormUrlEncoded
     @PUT("/editar-anuncio")
-    Call<Anuncio> EditarAnuncio (@Field("nome") String nome, @Field("preco") String preco, @Field("mensagem") String mensagem);
+    Call<Anuncio> EditarAnuncio (@Field("id") String id, @Field("nome") String nome, @Field("preco") String preco, @Field("mensagem") String mensagem);
 
     @FormUrlEncoded
-    @DELETE("/remove-anuncio")
-    Call<Anuncio> RemoverAnuncio (@Field("nome") String nome);
+    @DELETE("/remover-anuncio")
+    Call<Anuncio> RemoverAnuncio (@Field("id") String id);
 
 }

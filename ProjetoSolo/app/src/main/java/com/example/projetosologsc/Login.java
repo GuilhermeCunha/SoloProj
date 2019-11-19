@@ -89,6 +89,10 @@ public class Login extends AppCompatActivity  implements Organization {
                             SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.pref_key), Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString(getString(R.string.pref_email), response.body().getEmail());
+                            editor.putString(getString(R.string.pref_email), response.body().getEmail());
+                            editor.putString(getString(R.string.pref_nome), response.body().getNome());
+                            editor.putString(getString(R.string.pref_cpf), response.body().getCPF());
+                            editor.putString(getString(R.string.pref_celular), response.body().getCelular());
                             editor.apply();
 
                             Intent i = new Intent(getApplicationContext(), Menu.class);

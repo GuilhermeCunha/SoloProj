@@ -25,6 +25,7 @@ public class Register extends AppCompatActivity implements Organization {
     EditText editNome;
     EditText editCelular;
     EditText editSenha;
+    EditText editCPF;
     Button btnRegisterCriar;
     Button btnRegisterVoltar;
 
@@ -42,6 +43,7 @@ public class Register extends AppCompatActivity implements Organization {
         this.editCelular = (EditText) findViewById(R.id.editRegisterCelular);
         this.editNome = (EditText) findViewById(R.id.editRegisterNome);
         this.editSenha = (EditText) findViewById(R.id.editRegisterSenha);
+        this.editCPF = (EditText) findViewById(R.id.editRegisterCPF);
         this.btnRegisterVoltar = (Button) findViewById(R.id.btnRegisterVoltar);
         this.btnRegisterCriar = (Button) findViewById(R.id.btnRegisterCriar);
     }
@@ -61,12 +63,13 @@ public class Register extends AppCompatActivity implements Organization {
                 String nome =  editNome.getText().toString();
                 String celular =  editCelular.getText().toString();
                 String senha =  editSenha.getText().toString();
+                String CPF =  editCPF.getText().toString();
 
-                Usuario usuario = new Usuario(email, senha, celular, nome);
+                Usuario usuario = new Usuario(email, senha, celular, nome, CPF);
                 Log.i("PRINT", usuario.getNome());
 
                 NodeServer service = RetrofitClientInstance.getRetrofitInstance().create(NodeServer.class);
-                Call<Usuario> call = service.criarUsuario(email, nome, senha, celular);
+                Call<Usuario> call = service.criarUsuario(email, nome, senha, celular, CPF);
                 call.enqueue(new Callback<Usuario>() {
                     @Override
                     public void onResponse(Call<Usuario> call, Response<Usuario> response) {
