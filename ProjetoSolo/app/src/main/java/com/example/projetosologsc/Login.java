@@ -6,6 +6,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -15,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.projetosologsc.API.RetrofitClientInstance;
+import com.example.projetosologsc.FuncoesEstaticas.FuncoesEstaticas;
 import com.example.projetosologsc.Interfaces.NodeServer;
 import com.example.projetosologsc.Interfaces.Organization;
 import com.example.projetosologsc.Model.Usuario;
@@ -73,6 +76,13 @@ public class Login extends AppCompatActivity  implements Organization {
         this.btnLogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(!FuncoesEstaticas.isConnected(getApplicationContext())){
+                    Toast toast = Toast.makeText(getApplicationContext(), "Sem conexão", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
+
                 String strEmail = edtEmail.getText().toString();
                 String strPassword = edtPassword.getText().toString();
                 //LoginAuth.login(strEmail, strPassword);

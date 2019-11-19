@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.projetosologsc.API.RetrofitClientInstance;
+import com.example.projetosologsc.FuncoesEstaticas.FuncoesEstaticas;
 import com.example.projetosologsc.Interfaces.NodeServer;
 import com.example.projetosologsc.Interfaces.Organization;
 import com.example.projetosologsc.Model.Usuario;
@@ -59,6 +60,11 @@ public class Register extends AppCompatActivity implements Organization {
         this.btnRegisterCriar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!FuncoesEstaticas.isConnected(getApplicationContext())){
+                    Toast toast = Toast.makeText(getApplicationContext(), "Sem conexão", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
                 String email =  editEmail.getText().toString();
                 String nome =  editNome.getText().toString();
                 String celular =  editCelular.getText().toString();

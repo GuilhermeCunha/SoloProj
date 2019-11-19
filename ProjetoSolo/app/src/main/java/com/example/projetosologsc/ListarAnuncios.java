@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.projetosologsc.API.RetrofitClientInstance;
 import com.example.projetosologsc.DAO.AnuncioDAO;
+import com.example.projetosologsc.FuncoesEstaticas.FuncoesEstaticas;
 import com.example.projetosologsc.Interfaces.NodeServer;
 import com.example.projetosologsc.Interfaces.Organization;
 import com.example.projetosologsc.Model.Anuncio;
@@ -38,6 +40,11 @@ public class ListarAnuncios extends AppCompatActivity implements Organization {
 
     @Override
     public void reconhecerElementos() {
+        if(!FuncoesEstaticas.isConnected(getApplicationContext())){
+            Toast toast = Toast.makeText(getApplicationContext(), "Sem conexão", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
         this.listview = (ListView) findViewById(R.id.listAnuncios);
         this.anuncios = AnuncioDAO.listarAnuncios(getApplicationContext());
         List<String> nomeAnuncios = new ArrayList<>();

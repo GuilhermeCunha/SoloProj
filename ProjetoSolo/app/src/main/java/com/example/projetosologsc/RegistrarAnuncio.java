@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.projetosologsc.API.RetrofitClientInstance;
 import com.example.projetosologsc.DAO.AnuncioDAO;
+import com.example.projetosologsc.FuncoesEstaticas.FuncoesEstaticas;
 import com.example.projetosologsc.Interfaces.NodeServer;
 import com.example.projetosologsc.Interfaces.Organization;
 import com.example.projetosologsc.Model.Anuncio;
@@ -46,6 +47,12 @@ public class RegistrarAnuncio extends AppCompatActivity implements Organization 
         this.btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(!FuncoesEstaticas.isConnected(getApplicationContext())){
+                    Toast toast = Toast.makeText(getApplicationContext(), "Sem conexão", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
                 String nome = editNome.getText().toString();
                 Double preco = Double.parseDouble(editPreco.getText().toString());
                 String mensagem = editMensagem.getText().toString();
