@@ -16,6 +16,7 @@ import com.example.projetosologsc.Interfaces.Organization;
 public class Menu extends AppCompatActivity implements Organization {
     Button btnListarProdutos;
     Button btnCadastrarAnuncios;
+    Button btnListarAnunciosRecycle;
     private DrawerLayout drawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class Menu extends AppCompatActivity implements Organization {
     public void reconhecerElementos() {
         this.btnListarProdutos = (Button) findViewById(R.id.btnMenuListarProdutos);
         this.btnCadastrarAnuncios = (Button) findViewById(R.id.btnMenuCadastrarProduto);
-
+        this.btnListarAnunciosRecycle = (Button) findViewById(R.id.btnListarAnunciosRecycle);
     }
 
     @Override
@@ -51,6 +52,13 @@ public class Menu extends AppCompatActivity implements Organization {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), RegistrarAnuncio.class);
+                startActivity(i);
+            }
+        });
+        this.btnListarAnunciosRecycle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), ListarAnunciosRecyclerView.class);
                 startActivity(i);
             }
         });

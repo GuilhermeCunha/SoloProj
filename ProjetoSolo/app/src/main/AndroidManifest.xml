@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RegistrarAnuncio"></activity>
+        <activity android:name=".ListarAnunciosRecyclerView"></activity>
+        <activity android:name=".RegistrarAnuncio" />
         <activity android:name=".Register" />
         <activity android:name=".ListarAnuncios" />
         <activity android:name=".Menu" />
