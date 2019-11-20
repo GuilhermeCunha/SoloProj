@@ -23,35 +23,34 @@ public class AnunciosAdapter extends RecyclerView.Adapter<AnunciosAdapter.Anunci
 
         AnuncioViewHolder(View itemView) {
             super(itemView);
-            cv = (CardView) itemView.findViewById(R.id.cardViewAnuncios);
+            cv = (CardView) itemView.findViewById(R.id.cvAnuncios);
             nomeAnuncio = (TextView) itemView.findViewById(R.id.txtCardViewNomeAnuncio);
             precoAnuncio = (TextView) itemView.findViewById(R.id.txtCardViewPrecoAnuncio);
         }
+    }
+    @NonNull
+    @Override
+    public AnuncioViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cardviewanuncios, viewGroup, false);
+        AnuncioViewHolder avh = new AnuncioViewHolder(view);
+        return avh;
+    }
 
-        @NonNull
-        @Override
-        public AnuncioViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cardviewanuncios, viewGroup, false);
-            AnuncioViewHolder avh = new AnuncioViewHolder(view);
-            return avh;
-        }
-
-        @Override
-        public void onBindViewHolder(AnuncioViewHolder anuncioViewHolder, int i) {
-            anuncioViewHolder.nomeAnuncio.setText(anuncios.get(i).getNome());
-            anuncioViewHolder.nomeAnuncio.setText(anuncios.get(i).getPreco().toString());
-        }
-        @Override
-        public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-            super.onAttachedToRecyclerView(recyclerView);
-        }
-        @Override
-        public int getItemCount() {
-            return anuncios.size();
-        }
-        public AnunciosAdapter(List<Anuncio> anuncios){
-            this.anuncios = anuncios;
-        }
+    @Override
+    public void onBindViewHolder(AnuncioViewHolder anuncioViewHolder, int i) {
+        anuncioViewHolder.nomeAnuncio.setText(anuncios.get(i).getNome());
+        anuncioViewHolder.nomeAnuncio.setText(anuncios.get(i).getPreco().toString());
+    }
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+    }
+    @Override
+    public int getItemCount() {
+        return anuncios.size();
+    }
+    public AnunciosAdapter(List<Anuncio> anuncios){
+        this.anuncios = anuncios;
     }
 
 

@@ -12,26 +12,26 @@ import com.example.projetosologsc.R;
 import com.example.projetosologsc.RecyclerView.AnunciosAdapter;
 import java.util.List;
 public class ListarAnunciosRecyclerView extends AppCompatActivity implements Organization{
-    RecyclerView rv;
-    LinearLayoutManager llm;
+    private RecyclerView rv;
     List<Anuncio> anuncios;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listar_anuncios_recycler_view);
+        setContentView(R.layout.recyclerviewanuncios);
+        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
+        rv = (RecyclerView) findViewById(R.id.rvAnuncios);
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(llm);
+        anuncios = AnuncioDAO.listarAnuncios(getApplicationContext());
+        AnunciosAdapter adapter = new AnunciosAdapter(anuncios);
+        rv.setAdapter(adapter);
+
         reconhecerElementos();
         reconhecerListeners();
     }
 
     @Override
     public void reconhecerElementos(){
-        this.rv = (RecyclerView) findViewById(R.id.rvAnuncios);
-        //this.rv.setHasFixedSize(true);
-        this.rv.setLayoutManager(this.llm);
-        AnunciosAdapter adapter = new AnunciosAdapter(this.anuncios);
-        this.rv.setAdapter(adapter);
-        this.llm = new LinearLayoutManager(getApplicationContext());
-        this.anuncios = AnuncioDAO.listarAnuncios(getApplicationContext());
     }
     @Override
     public void reconhecerListeners(){
