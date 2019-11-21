@@ -59,4 +59,9 @@ public class Anuncio {
         this.preco = preco;
         this.mensagem = mensagem;
     }
+
+    @Override
+    public String toString() {
+        return "[" + getID() + "] " + getNome();
+    }
 }

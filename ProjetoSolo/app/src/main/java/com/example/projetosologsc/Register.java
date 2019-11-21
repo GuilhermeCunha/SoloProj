@@ -84,6 +84,7 @@ public class Register extends AppCompatActivity implements Organization {
 
                             Intent returnIntent = new Intent();
                             returnIntent.putExtra("nome",nome);
+                            returnIntent.putExtra("email",email);
                             setResult(Activity.RESULT_OK,returnIntent);
                             finish();
                         }else{

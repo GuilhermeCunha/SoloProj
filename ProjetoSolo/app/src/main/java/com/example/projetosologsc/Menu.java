@@ -17,6 +17,8 @@ public class Menu extends AppCompatActivity implements Organization {
     Button btnListarProdutos;
     Button btnCadastrarAnuncios;
     Button btnListarAnunciosRecycle;
+    Button btnRemoverProduto;
+
     private DrawerLayout drawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class Menu extends AppCompatActivity implements Organization {
         this.btnListarProdutos = (Button) findViewById(R.id.btnMenuListarProdutos);
         this.btnCadastrarAnuncios = (Button) findViewById(R.id.btnMenuCadastrarProduto);
         this.btnListarAnunciosRecycle = (Button) findViewById(R.id.btnListarAnunciosRecycle);
+        this.btnRemoverProduto = (Button) findViewById(R.id.btnMenuRemoverAnuncio);
     }
 
     @Override
@@ -59,6 +62,13 @@ public class Menu extends AppCompatActivity implements Organization {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), ListarAnunciosRecyclerView.class);
+                startActivity(i);
+            }
+        });
+        this.btnRemoverProduto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), RemoverAnuncio.class);
                 startActivity(i);
             }
         });

@@ -66,6 +66,7 @@ public class AnuncioDAO {
             if (!cursor.isClosed()) {
                 cursor.close();
             }
+            Log.i("LISTARANUNCIOS", "Tamanho: " + anuncios.size());
             return anuncios;
         }
         return null;
@@ -78,8 +79,6 @@ public class AnuncioDAO {
         String where;
         try{
             where = "ID" + "=" + anuncio.getID();
-
-
             valores.put("nome", anuncio.getNome());
             valores.put("mensagem", anuncio.getMensagem());
             valores.put("preco", anuncio.getPreco());
@@ -94,7 +93,7 @@ public class AnuncioDAO {
 
     }
 
-    public boolean deletarAnuncio(int ID, Context context){
+    public static boolean deletarAnuncio(int ID, Context context){
         DBOpenHelper dbOpenHelper = new DBOpenHelper(context);
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
 

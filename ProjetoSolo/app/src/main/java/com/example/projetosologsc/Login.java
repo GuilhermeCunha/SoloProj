@@ -135,6 +135,8 @@ public class Login extends AppCompatActivity  implements Organization {
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
                 String nome = data.getStringExtra("nome");
+                String email = data.getStringExtra("email");
+                edtEmail.setText(email);
                 Toast toast = Toast.makeText(getApplicationContext(), "Seja bem vindo " + nome + ", basta realizar o login", Toast.LENGTH_LONG);
                 toast.show();
             }
